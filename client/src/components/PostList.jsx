@@ -1,13 +1,22 @@
-import useSWR from 'swr'
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import CommentCreate from "./CommentCreate";
 import CommentList from "./CommentList";
 
 const PostList = () => {
-    const fetcher = url => axios.get(url).then(res => res.data)
-    const { data, error } = useSWR("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4000.app.github.dev/posts", fetcher, { refreshInterval: 500 });
-    const renderedPosts = data && Object?.values(data)?.map((post) => {
+    const [posts, setPosts] = useState({});
+
+    const fetchPosts = async () => {
+        const res = await axios.get("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4000.app.github.dev/posts");
+
+        setPosts(res.data);
+    };
+
+    useEffect(() => {
+        fetchPosts();
+    }, []);
+
+    const renderedPosts = Object.values(posts).map((post) => {
         return (
             <div
                 className="card"

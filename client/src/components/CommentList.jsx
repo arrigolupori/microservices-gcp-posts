@@ -1,14 +1,22 @@
-import useSWR from 'swr'
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const CommentList = ({ postId }) => {
+    const [comments, setComments] = useState([]);
 
-    const fetcher = url => axios.get(url).then(res => res.data)
+    const fetchData = async () => {
+        const res = await axios.get(
+            `https://redesigned-space-eureka-gww46gjpwqv2vjv9-4001.app.github.dev/posts/${postId}/comments`
+        );
 
-    const { data, error } = useSWR(`https://redesigned-space-eureka-gww46gjpwqv2vjv9-4001.app.github.dev/posts/${postId}/comments`, fetcher, { refreshInterval: 1000 });
+        setComments(res.data);
+    };
 
-    const renderedComments = data && data?.map((comment) => {
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const renderedComments = comments.map((comment) => {
         return <li key={comment.id}>{comment.content}</li>;
     });
 
