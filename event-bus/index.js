@@ -7,8 +7,12 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+const events = [];
+
 app.post("/events", (req, res) => {
     const event = req.body;
+
+    events.push(event);
 
     axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4000.app.github.dev/events", event).catch((err) => {
         console.log(err.message);
@@ -25,6 +29,10 @@ app.post("/events", (req, res) => {
 
     res.send({ status: "OK" });
 });
+
+app.get('/events', (req, res) => {
+    res.send(events);
+})
 
 app.listen(4005, () => {
     console.log("Listening on 4005");
