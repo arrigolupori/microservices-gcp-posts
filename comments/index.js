@@ -20,16 +20,19 @@ app.post('/posts/:id/comments', async (req, res) => {
 
     const comments = commentsByPostId[req.params.id] || [];
 
-    comments.push({ id: commentId, content });
+    comments.push({ id: commentId, content, status: 'pending' });
 
     commentsByPostId[req.params.id] = comments;
+
+    
 
     await axios.post('https://redesigned-space-eureka-gww46gjpwqv2vjv9-4005.app.github.dev/events', {
         type: 'CommentCreated',
         data: {
             id: commentId,
             content,
-            postId: req.params.id
+            postId: req.params.id,
+            status: 'pending'
         }
     });
 
