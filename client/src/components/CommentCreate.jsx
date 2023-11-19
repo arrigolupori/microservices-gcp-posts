@@ -7,7 +7,7 @@ const CommentCreate = ({ postId }) => {
     const onSubmit = async (event) => {
         event.preventDefault();
 
-        await axios.post(`https://redesigned-space-eureka-gww46gjpwqv2vjv9-4001.app.github.dev/posts/${postId}/comments`, {
+        await axios.post(`http://posts.com/posts/${postId}/comments`, {
             content,
         });
 

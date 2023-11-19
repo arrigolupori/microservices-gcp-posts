@@ -7,7 +7,7 @@ const PostCreate = () => {
     const onSubmit = async (event) => {
         event.preventDefault();
 
-        await axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4000.app.github.dev/posts", {
+        await axios.post("http://posts.com/posts/create", {
             title,
         });
 
