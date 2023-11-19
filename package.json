@@ -1,0 +1,13 @@
+{
+  "name": "microservices-gcp",
+  "version": "1.0.0",
+  "description": "📖 LEARN: Going through Udemy's \"Microservices with Node JS and React\" course to learn about practical GCP development.",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "cd posts && npm i && cd  ../comments && npm i && cd ../moderation && npm i && cd ../query && npm i && cd ../event-bus && npm i && cd ../client && npm i && cd .. && echo \"Done installing!\"",
+    "build:images": "cd posts && docker build -t sg/posts . && cd  ../comments && docker build -t sg/comments . && cd ../moderation && docker build -t sg/moderation . && cd ../query && docker build -t sg/query . && cd ../event-bus  && docker build -t sg/event-bus . && cd ../client && docker build -t sg/client . && cd .. && echo \"Done creating images!\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
