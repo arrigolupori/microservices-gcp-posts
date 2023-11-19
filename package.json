@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prepare": "cd posts && npm i && cd  ../comments && npm i && cd ../moderation && npm i && cd ../query && npm i && cd ../event-bus && npm i && cd ../client && npm i && cd .. && echo \"Done installing!\"",
-    "build:images": "cd posts && docker build -t sg/posts . && cd  ../comments && docker build -t sg/comments . && cd ../moderation && docker build -t sg/moderation . && cd ../query && docker build -t sg/query . && cd ../event-bus  && docker build -t sg/event-bus . && cd ../client && docker build -t sg/client . && cd .. && echo \"Done creating images!\""
+    "build:images": "cd posts && docker build -t arrigolupori/posts . && cd  ../comments && docker build -t arrigolupori/comments . && cd ../moderation && docker build -t arrigolupori/moderation . && cd ../query && docker build -t arrigolupori/query . && cd ../event-bus  && docker build -t arrigolupori/event-bus . && cd ../client && docker build -t arrigolupori/client . && cd .. && echo \"Done creating images!\"",
+    "push:images": "docker push arrigolupori/posts && docker push arrigolupori/comments && docker push arrigolupori/moderation && docker push arrigolupori/query && docker push arrigolupori/event-bus && docker push arrigolupori/client && echo \"Done pushing images!\"",
+    "apply:k8s": "cd infra/k8s && kubectl apply -f . && cd ../.. && echo \"Done applying k8s configs!\""
   },
   "keywords": [],
   "author": "",

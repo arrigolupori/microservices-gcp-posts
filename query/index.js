@@ -52,7 +52,7 @@ app.listen(4002, async () => {
     console.log('Listening on 4002');
 
     try {
-        const res = await axios.get('https://redesigned-space-eureka-gww46gjpwqv2vjv9-4005.app.github.dev/events');
+        const res = await axios.get('http://event-bus-srv:4005/events');
 
         for (let event of res.data) {
             console.log('Processing event:', event.type);
