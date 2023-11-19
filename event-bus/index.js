@@ -14,18 +14,18 @@ app.post("/events", (req, res) => {
 
     events.push(event);
 
-    axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4000.app.github.dev/events", event).catch((err) => {
+    axios.post("http://posts-clusterip-srv:4000/events", event).catch((err) => {
         console.log(err.message);
     });
-    axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4001.app.github.dev/events", event).catch((err) => {
-        console.log(err.message);
-    });
-    axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4002.app.github.dev/events", event).catch((err) => {
-        console.log(err.message);
-    });
-    axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4003.app.github.dev/events", event).catch((err) => {
-        console.log(err.message);
-    });
+    // axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4001.app.github.dev/events", event).catch((err) => {
+    //     console.log(err.message);
+    // });
+    // axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4002.app.github.dev/events", event).catch((err) => {
+    //     console.log(err.message);
+    // });
+    // axios.post("https://redesigned-space-eureka-gww46gjpwqv2vjv9-4003.app.github.dev/events", event).catch((err) => {
+    //     console.log(err.message);
+    // });
 
     res.send({ status: "OK" });
 });
